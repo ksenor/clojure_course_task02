@@ -1,0 +1,50 @@
+; # описание типов комментов
+; pre-release
+;; pre-pre-release
+;;; super-base-primitive-example
+
+; # регэкспы
+;;; (#(re-pattern %) "dsflkjhsfs")
+
+; # достаем список файл
+;; (def files (.listFiles (File. ".")))
+;;; (.toString (get files 3))
+;; (pmap #(get files %) '(1 2))
+; (pmap  #(.toString (get files %)) (take (count files) (iterate inc 0)))
+
+;; (defn xz [a & args]
+;;   (println (sort (flatten (conj a args))))
+;;   (if (not (= args nil)) (count (vec args))))
+
+(ns clojure-course-task02.core
+  (:gen-class)
+  (:import java.io.File))
+
+(defn get-files-by-path [path]
+  (pmap #(.getName %) (seq (.listFiles (File. path)))))
+
+(defn walk-files-from-path [path]
+  (loop
+      [pathlen (get-files-by-path path)       
+       res []
+  nil)
+
+(defn find-files [file-name path]
+  "TODO: Implement searching for a file using his name as a regexp."
+  (let [
+       files (.listFiles (File. path))
+  ])
+  (get-files-by-path path))
+
+(defn usage []
+  (println "Usage: $ run.sh file_name path"))
+
+(defn -main [file-name path]
+  (if (or (nil? file-name)
+          (nil? path))
+    (usage)
+    (do
+      (println "Searching for " file-name " in " path "...")
+      (dorun (map println (find-files file-name path))))))
+
+(-main "a" ".")
