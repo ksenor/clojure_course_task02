@@ -13,12 +13,18 @@
 ;; (pmap #(get files %) '(1 2))
 ; (pmap  #(.toString (get files %)) (take (count files) (iterate inc 0)))
 
+(defn get-files-by-path [path]
+  (pmap #(.getName %) (seq (.listFiles (File. path)))))
+
+(defn walk-files-from-path [path]
+  nil)
+
 (defn find-files [file-name path]
   "TODO: Implement searching for a file using his name as a regexp."
   (let [
        files (.listFiles (File. path))
   ])
-  (pmap #(.getName %) (seq (.listFiles (File. path)))))
+  (get-files-by-path path))
 
 (defn usage []
   (println "Usage: $ run.sh file_name path"))
