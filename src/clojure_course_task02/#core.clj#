@@ -32,7 +32,7 @@
     (if (= pre-res res)
       res
       (recur 
-       (flatten (conj res (flatten pre-res)))
+       ((flatten (conj res (flatten pre-res)))
        ;(pmap get-files-tree-recur res)
        (println res)))))
 
